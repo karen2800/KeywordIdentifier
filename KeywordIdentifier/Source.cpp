@@ -31,7 +31,7 @@ struct Word {
 
 struct lessFreq {
 	inline bool operator() (const Word& word1, const Word& word2) {
-		return (word1.frequency < word2.frequency);
+		return (word1.globalFreq < word2.globalFreq);
 	}
 };
 
@@ -43,6 +43,7 @@ struct greaterFreq {
 
 map<string, int> globalDictionary; 
 map<string, Word> documentDictionary;
+vector<Word> words;
 
 string globalFile = "wordFrequency.txt"; // global word frequencies
 string localFile;
@@ -74,10 +75,33 @@ int main(int argc, char** argv) {
 
 	// sort document words by 
 	//sort(documentDictionary.begin(), documentDictionary.end(), greaterFreq());
+
 	// check if it meets a criteria
+	// remove words with high global frequencies
 	for (auto& word : documentDictionary) {
-		
+		Word w;
+		if (word.second.globalFreq < freqBound) {
+			w.word = word.first;
+			w.globalFreq = word.second.globalFreq;
+			w.frequency = word.second.frequency;
+			words.push_back(w);
+		}
 	}
+
+	// sort by lower frequency globally
+	sort(words.begin(), words.end(), lessFreq());
+
+	// sort by greater frequency in document
+	sort(words.begin(), words.end(), greaterFreq());
+
+	cout << "Word, document frequency, global frequency" << endl << endl;
+	for (int i = 0; i < words.size(); i++) {
+		cout << words[i].word << " " << words[i].frequency << " " << words[i].globalFreq << endl;
+	}
+	cout << endl;
+
+	// sort words for summary
+	
 
 
 	
