@@ -94,9 +94,10 @@ int main(int argc, char** argv) {
 	// sort by greater frequency in document
 	sort(words.begin(), words.end(), greaterFreq());
 
-	cout << "Word, document frequency, global frequency" << endl << endl;
+	cout << "Word" << " [document frequency, global frequency]" << endl;
+	cout << "------------------------------------" << endl << endl;
 	for (int i = 0; i < words.size(); i++) {
-		cout << words[i].word << " " << words[i].frequency << " " << words[i].globalFreq << endl;
+		cout << words[i].word << " [" << words[i].frequency << ", " << words[i].globalFreq << "]" << endl << endl;
 	}
 	cout << endl;
 
