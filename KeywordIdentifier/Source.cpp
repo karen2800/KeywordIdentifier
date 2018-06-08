@@ -56,7 +56,7 @@ int summarySize = 40;
 
 void populateGlobalWords(string);
 void populateDocumentWords(string);
-void populateLemmaMap();
+void populateLemmaMap(string);
 
 int main(int argc, char** argv) {
 
@@ -69,7 +69,7 @@ int main(int argc, char** argv) {
 	populateGlobalWords(globalFile);
 
 	// populate lemma map
-	populateLemmaMap();
+	populateLemmaMap(lemmaFile);
 
 	// populate document words using file given by user
 	populateDocumentWords(localFile);
@@ -182,8 +182,8 @@ void populateGlobalWords(string file) {
 // if base word is found for the given alternate word, return frequency of base global word
 
 // map alternate words to their corresponding base words
-void populateLemmaMap() {
-	ifstream infile(lemmaFile);
+void populateLemmaMap(string file) {
+	ifstream infile(file);
 
 	// Populate alternate words with words and their corresponding lemma/base words
 	if (infile.is_open()) {
@@ -258,6 +258,17 @@ void populateLemmaMap() {
 
 	// close file
 	infile.close();
+
+	// if lemma is found in global dictionary, add alternate words to global dictionary with corresponding frequencies
+	for (auto& item : lemmaDictionary) {
+		// if lemma found in global dictionary
+		if (globalDictionary.find(item.first) != globalDictionary.end()) {
+			// for each alternate word, add alt words to global
+			for (string word : item.second) {
+				globalDictionary[word] = globalDictionary[item.first];
+			}
+		}
+	}
 }
 
 void populateDocumentWords(string file) {
