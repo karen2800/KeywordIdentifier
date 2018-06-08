@@ -52,7 +52,7 @@ string localFile = "";
 string lemmaFile = "e_lemma.txt";
 
 const int freqBound = 124000;
-int summarySize = 40;
+int summarySize = 30;
 
 void populateGlobalWords(string);
 void populateDocumentWords(string);
@@ -65,7 +65,10 @@ int main(int argc, char** argv) {
 	//istringstream(argv[1]) >> localFile;
 	//localFile = argv[1];
 
-	localFile = "alice29.txt";
+	//localFile = "alice29.txt";
+	//localFile = "testing.txt";
+	//localFile = "aiWiki.txt";
+	localFile = "goldenretrieverWiki.txt";
 
 	summarizeText();
 
