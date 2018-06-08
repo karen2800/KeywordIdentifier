@@ -44,15 +44,19 @@ struct greaterFreq {
 
 map<string, int> globalDictionary; 
 map<string, Word> documentDictionary;
+map<string, vector<string>> lemmaDictionary; // base word, vector<alternate words>
 vector<Word> words;
 
 string globalFile = "wordFrequency.txt"; // global word frequencies
 string localFile;
+string lemmaFile = "e_lemma.txt";
+
 const int freqBound = 124000;
 int summarySize = 40;
 
 void populateGlobalWords(string);
 void populateDocumentWords(string);
+void populateLemmaMap();
 
 int main(int argc, char** argv) {
 
@@ -63,6 +67,9 @@ int main(int argc, char** argv) {
 
 	// populate global words using global file
 	populateGlobalWords(globalFile);
+
+	// populate lemma map
+	populateLemmaMap();
 
 	// populate document words using file given by user
 	populateDocumentWords(localFile);
@@ -103,11 +110,6 @@ int main(int argc, char** argv) {
 	}
 	cout << endl;
 
-	// sort words for summary
-	
-
-
-	
 }
 
 void populateGlobalWords(string file) {
@@ -177,6 +179,87 @@ void populateGlobalWords(string file) {
 	infile.close();
 }
 
+// if base word is found for the given alternate word, return frequency of base global word
+
+// map alternate words to their corresponding base words
+void populateLemmaMap() {
+	ifstream infile(lemmaFile);
+
+	// Populate alternate words with words and their corresponding lemma/base words
+	if (infile.is_open()) {
+		string line;
+		for (;;) {
+			if (!getline(infile, line)) {
+				break;
+			}
+
+			transform(line.begin(), line.end(), line.begin(), ::tolower);
+			// deliminate by space to separate words ////////////////////////////
+			stringstream ss(line);
+			string item;
+			bool alternateWords = false;
+			vector<string> altWords;
+			string lemma = "";
+
+			while (ss >> item) {
+
+				// delimiter
+				if (item.compare("->") == 0) {
+					alternateWords = true;
+				}
+
+				// lemma
+				else if (item.compare("") != 0 && alternateWords == false) {
+					int count = 0;
+					for (char c : item) {
+						if (c != ' ' && c != -96) {
+							if ((c >= 'a' && c <= 'z') || c == '\'') {
+								if (count == 0 || count == item.size()) {
+									if (c != '\'') {
+										lemma += c;
+									}
+								}
+								else {
+									lemma += c;
+								}
+							}
+						}
+						count++;
+					}
+				}
+
+				// alternate words
+				else {
+					int count = 0;
+					string altw = "";
+					for (char c : item) {
+						// delimiter reached
+						if (c == ',') {
+							altWords.push_back(altw);
+							altw = "";
+						}
+						else if (c != ' ' && c != -96) {
+							altw += c;
+						}
+					}
+					if (altw != "") {
+						altWords.push_back(altw);
+					}
+				}
+			}
+
+			// populate lemma map
+			lemmaDictionary[lemma] = altWords;
+		}
+	}
+	else {
+		cout << "Cannot open file" << endl;
+	}
+
+	// close file
+	infile.close();
+}
+
 void populateDocumentWords(string file) {
 	ifstream infile(file);
 
@@ -232,38 +315,3 @@ void populateDocumentWords(string file) {
 	// close file
 	infile.close();
 }
-
-//void populateDocumentWords(string file) {
-//	ifstream infile(file);
-//	int countFreq;
-//	// Populate globalWords vector with words and their corresponding frequencies
-//	if (infile.is_open()) {
-//		string line;
-//		for (;;) {
-//			if (!getline(infile, line)) {
-//				break;
-//			}
-//
-//			// deliminate by space to separate words
-//			stringstream ss(line);
-//			Word w;
-//
-//			ss >> w.word;
-//
-//			if (ss.peek() == '\t') {
-//				ss.ignore();
-//			}
-//
-//			ss >> w.frequency;
-//
-//			// add word to globalWords vector
-//			globalWords.push_back(w);
-//		}
-//	}
-//	else {
-//		cout << "Cannot open file" << endl;
-//	}
-//
-//	// close file
-//	infile.close();
-//}

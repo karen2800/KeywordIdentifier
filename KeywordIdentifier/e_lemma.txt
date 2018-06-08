@@ -301,7 +301,7 @@ alight -> alights,alighting,alighted,alit
 align -> aligns,aligning,aligned
 alignment -> alignments
 alkali -> alkalis
-all-rounder -> all-rounders.
+all-rounder -> all-rounders
 allay -> allays,allaying,allayed
 allegation -> allegations
 allege -> alleges,alleging,alleged
