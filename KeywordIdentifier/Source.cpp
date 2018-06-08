@@ -20,6 +20,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale>
+#include <cstdlib>
 
 using namespace std;
 
@@ -48,6 +49,7 @@ vector<Word> words;
 string globalFile = "wordFrequency.txt"; // global word frequencies
 string localFile;
 const int freqBound = 124000;
+int summarySize = 40;
 
 void populateGlobalWords(string);
 void populateDocumentWords(string);
@@ -57,7 +59,7 @@ int main(int argc, char** argv) {
 	// get document to summarize from user
 	//istringstream(argv[1]) >> localFile;
 	//localFile = argv[1];
-	localFile = "testing.txt";
+	localFile = "alice29.txt";
 
 	// populate global words using global file
 	populateGlobalWords(globalFile);
@@ -66,9 +68,6 @@ int main(int argc, char** argv) {
 	populateDocumentWords(localFile);
 
 	// assign global frequencies to document word
-	//for (Word word : documentDictionary) {
-	//	word.globalFreq = globalDictionary[word.word];
-	//}
 	for (auto& word : documentDictionary) {
 		word.second.globalFreq = globalDictionary[word.first];
 	}
@@ -96,8 +95,11 @@ int main(int argc, char** argv) {
 
 	cout << "Word" << " [document frequency, global frequency]" << endl;
 	cout << "------------------------------------" << endl << endl;
-	for (int i = 0; i < words.size(); i++) {
-		cout << words[i].word << " [" << words[i].frequency << ", " << words[i].globalFreq << "]" << endl << endl;
+	if (words.size() < summarySize) {
+		summarySize = words.size();
+	}
+	for (int i = 0; i < summarySize; i++) {
+		cout << words[i].word << " [" << words[i].frequency << ", " << words[i].globalFreq << "]" << endl;
 	}
 	cout << endl;
 
@@ -119,27 +121,52 @@ void populateGlobalWords(string file) {
 				break;
 			}
 
-			// deliminate by space to separate words
+			// deliminate by space to separate words ////////////////////////////
 			stringstream ss(line);
-			string word;
+			string item;
 
-			if (ss.peek() == '\t') {
-				ss.ignore();
+			int count = 1;
+
+			string word = "";
+			int frequency = 0;
+
+			while (ss >> item) {
+
+				// if word != "" --> 
+				if (item.compare("") != 0) {
+					// If item is first, it is the word
+					if (count == 1) {
+						transform(item.begin(), item.end(), item.begin(), ::tolower);
+						int countChar = 0;
+						for (char c : item) {
+							if (c != ' ' && c != -96) {
+								if ((c >= 'a' && c <= 'z') || c == '\'') {
+									if (countChar == 0 || countChar == item.size()) {
+										if (c != '\'') {
+											word += c;
+										}
+									}
+									else {
+										word += c;
+									}
+								}
+							}
+							countChar++;
+						}
+						count++;
+					}
+					// If item is second, it is the frequency
+					else if (count == 2) {
+						frequency = stoi(item);
+						count == 1;
+
+						// add word to globalWords vector
+						globalDictionary[word] = frequency;
+
+						word = "";
+					}
+				}
 			}
-
-			ss >> word;
-			transform(word.begin(), word.end(), word.begin(), ::tolower);
-			string trimmed = word.substr(3);
-
-			if (ss.peek() == '\t') {
-				ss.ignore();
-			}
-
-			int frequency;
-			ss >> frequency;
-
-			// add word to globalWords vector
-			globalDictionary[trimmed] = frequency;
 		}
 	}
 	else {
@@ -161,34 +188,41 @@ void populateDocumentWords(string file) {
 				break;
 			}
 
-			// deliminate by space to separate words
+			transform(line.begin(), line.end(), line.begin(), ::tolower);
+			// deliminate by space to separate words ////////////////////////////
 			stringstream ss(line);
-			string word;
+			string item;
 
-			if (ss.peek() == '\t') {
-				ss.ignore();
+			while (ss >> item) {
+				string word = "";
+				// if word != "" --> 
+				if (item.compare("") != 0) {
+					int count = 0;
+					for (char c : item) {
+						if (c != ' ' && c != -96) {
+							if ((c >= 'a' && c <= 'z') || c == '\'') {
+								if (count == 0 || count == item.size()) {
+									if (c != '\'') {
+										word += c;
+									}
+								}
+								else {
+									word += c;
+								}
+							}
+						}
+						count++;
+					}
+					if (documentDictionary.find(word) == documentDictionary.end()) {
+						//not found
+						documentDictionary[word].frequency = 1;
+					}
+					else {
+						//found
+						documentDictionary[word].frequency++;
+					}
+				}
 			}
-
-			locale loc;
-
-			ss >> word;
-			
-			transform(word.begin(), word.end(), word.begin(), ::tolower);
-
-			if (ss.peek() == '\t') {
-				ss.ignore();
-			}
-
-			if (documentDictionary.find(word) == documentDictionary.end()) {
-				//not found
-				documentDictionary[word].frequency = 1;
-			}
-			else {
-				//found
-				documentDictionary[word].frequency++;
-			}
-			// add word to globalWords vector
-			//globalDictionary[trimmed] = frequency;
 		}
 	}
 	else {
