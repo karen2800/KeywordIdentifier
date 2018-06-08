@@ -86,7 +86,7 @@ int main(int argc, char** argv) {
 	// remove words with high global frequencies
 	for (auto& word : documentDictionary) {
 		Word w;
-		if (word.second.globalFreq < freqBound) {
+		if (word.second.globalFreq < freqBound && word.first.size() != 0) {
 			w.word = word.first;
 			w.globalFreq = word.second.globalFreq;
 			w.frequency = word.second.frequency;
@@ -100,13 +100,23 @@ int main(int argc, char** argv) {
 	// sort by greater frequency in document
 	sort(words.begin(), words.end(), greaterFreq());
 
-	cout << "Word" << " [document frequency, global frequency]" << endl;
-	cout << "------------------------------------" << endl << endl;
+	// only keep words for summary
+	vector<Word> summary;
 	if (words.size() < summarySize) {
 		summarySize = words.size();
 	}
 	for (int i = 0; i < summarySize; i++) {
-		cout << words[i].word << " [" << words[i].frequency << ", " << words[i].globalFreq << "]" << endl;
+		summary.push_back(words[i]);
+	}
+
+	// sort by lower frequency globally
+	sort(summary.begin(), summary.end(), lessFreq());
+
+	cout << "Word" << " [document frequency, global frequency]" << endl;
+	cout << "------------------------------------" << endl << endl;
+
+	for (int i = 0; i < summarySize; i++) {
+		cout << summary[i].word << " [" << summary[i].frequency << ", " << summary[i].globalFreq << "]" << endl;
 	}
 	cout << endl;
 
@@ -290,12 +300,13 @@ void populateDocumentWords(string file) {
 			while (ss >> item) {
 				string word = "";
 				// if word != "" --> 
-				if (item.compare("") != 0) {
+				// if (item.compare("") != 0) {
+				if (item != "") {
 					int count = 0;
 					for (char c : item) {
 						if (c != ' ' && c != -96) {
 							if ((c >= 'a' && c <= 'z') || c == '\'') {
-								if (count == 0 || count == item.size()) {
+								if (count == 0 || count == item.size() - 1) {
 									if (c != '\'') {
 										word += c;
 									}

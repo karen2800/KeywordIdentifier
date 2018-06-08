@@ -3926,7 +3926,7 @@ divorcee -> divorcees
 divot -> divots
 divulge -> divulges,divulging,divulged
 dizzy -> dizzier,dizziest,dizzies,dizzying,dizzied
-do -> does,doing,did,done
+do -> does,doing,did,done,don't
 do-gooder -> do-gooders
 doc -> docs
 dock -> docks,docking,docked
@@ -6522,6 +6522,7 @@ hypodermic -> hypodermics
 hypotenuse -> hypotenuses
 hypothesis -> hypotheses
 hysterectomy -> hysterectomies
+I -> I'm
 ice -> ices,icing,iced
 ice-box -> ice-boxes
 ice-bucket -> ice-buckets
@@ -6975,6 +6976,7 @@ isotope -> isotopes
 Israeli -> Israelis
 issue -> issues,issuing,issued
 isthmus -> isthmuses
+it -> it's,its
 Italian -> Italians
 itch -> itches,itching,itched
 item -> items
