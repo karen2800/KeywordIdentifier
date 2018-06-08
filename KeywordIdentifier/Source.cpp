@@ -48,7 +48,7 @@ map<string, vector<string>> lemmaDictionary; // base word, vector<alternate word
 vector<Word> words;
 
 string globalFile = "wordFrequency.txt"; // global word frequencies
-string localFile;
+string localFile = "";
 string lemmaFile = "e_lemma.txt";
 
 const int freqBound = 124000;
@@ -57,14 +57,21 @@ int summarySize = 40;
 void populateGlobalWords(string);
 void populateDocumentWords(string);
 void populateLemmaMap(string);
+void summarizeText();
 
 int main(int argc, char** argv) {
 
 	// get document to summarize from user
 	//istringstream(argv[1]) >> localFile;
 	//localFile = argv[1];
+
 	localFile = "alice29.txt";
 
+	summarizeText();
+
+}
+
+void summarizeText() {
 	// populate global words using global file
 	populateGlobalWords(globalFile);
 
@@ -119,7 +126,6 @@ int main(int argc, char** argv) {
 		cout << summary[i].word << " [" << summary[i].frequency << ", " << summary[i].globalFreq << "]" << endl;
 	}
 	cout << endl;
-
 }
 
 void populateGlobalWords(string file) {
