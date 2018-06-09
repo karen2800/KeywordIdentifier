@@ -54,6 +54,7 @@ string lemmaFile = "e_lemma.txt";
 const int freqBound = 124000;
 int summarySize = 30;
 
+void populateGlobalOverall();
 void populateGlobalWords(string);
 void populateDocumentWords(string);
 void populateLemmaMap(string);
@@ -65,21 +66,34 @@ int main(int argc, char** argv) {
 	//istringstream(argv[1]) >> localFile;
 	//localFile = argv[1];
 
+	vector<string> texts = { "alice29.txt", "aiWiki.txt", "goldenretrieverWiki.txt" };
 	//localFile = "alice29.txt";
 	//localFile = "testing.txt";
 	//localFile = "aiWiki.txt";
-	localFile = "goldenretrieverWiki.txt";
+	//localFile = "goldenretrieverWiki.txt";
 
-	summarizeText();
+	populateGlobalOverall();
+
+	for (int i = 0; i < texts.size(); i++) {
+		localFile = texts[i];
+		cout << "Summarize " << localFile << endl;
+		summarizeText();
+
+		documentDictionary.clear();
+		words.clear();
+	}
 
 }
 
-void summarizeText() {
+void populateGlobalOverall() {
 	// populate global words using global file
 	populateGlobalWords(globalFile);
 
 	// populate lemma map
 	populateLemmaMap(lemmaFile);
+}
+
+void summarizeText() {
 
 	// populate document words using file given by user
 	populateDocumentWords(localFile);
