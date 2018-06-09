@@ -42,6 +42,16 @@ struct greaterFreq {
 	}
 };
 
+double docWordsCount = 0;
+
+struct orderForSummary {
+	inline bool operator() (const Word& word1, const Word& word2) {
+		double first = ((double)word1.frequency / (double)docWordsCount) / (double)log((double)word1.globalFreq + 2);
+		double second = ((double)word2.frequency / (double)docWordsCount) / (double)log((double)word2.globalFreq + 2);
+		return (first > second);
+	}
+};
+
 map<string, int> globalDictionary; 
 map<string, Word> documentDictionary;
 map<string, vector<string>> lemmaDictionary; // base word, vector<alternate words>
@@ -66,7 +76,7 @@ int main(int argc, char** argv) {
 	//istringstream(argv[1]) >> localFile;
 	//localFile = argv[1];
 
-	vector<string> texts = { "alice29.txt", "aiWiki.txt", "goldenretrieverWiki.txt" };
+	vector<string> texts = { "alice29.txt", "aiWiki.txt", "goldenretrieverWiki.txt", "cogPsych.txt" };
 	//localFile = "alice29.txt";
 	//localFile = "testing.txt";
 	//localFile = "aiWiki.txt";
@@ -123,6 +133,8 @@ void summarizeText() {
 
 	// sort by greater frequency in document
 	sort(words.begin(), words.end(), greaterFreq());
+
+	sort(words.begin(), words.end(), orderForSummary());
 
 	// only keep words for summary
 	vector<Word> summary;
@@ -359,6 +371,8 @@ void populateDocumentWords(string file) {
 
 	// close file
 	infile.close();
+
+	docWordsCount = documentDictionary.size();
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

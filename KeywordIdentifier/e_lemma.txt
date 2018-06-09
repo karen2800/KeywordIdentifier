@@ -1788,6 +1788,7 @@ campion -> campions
 campsite -> campsites
 campus -> campuses
 camshaft -> camshafts
+can -> can't,cannot
 can-can -> can-cans
 Canadian -> Canadians
 canal -> canals
@@ -3926,7 +3927,7 @@ divorcee -> divorcees
 divot -> divots
 divulge -> divulges,divulging,divulged
 dizzy -> dizzier,dizziest,dizzies,dizzying,dizzied
-do -> does,doing,did,done,don't
+do -> does,doing,did,done,don't,doesn't,didn't
 do-gooder -> do-gooders
 doc -> docs
 dock -> docks,docking,docked
@@ -4954,7 +4955,7 @@ fiddler -> fiddlers
 fiddly -> fiddlier,fiddliest
 fidget -> fidgets,fidgeting,fidgeted
 fief -> fiefs
-field -> fields,fielding,fielded
+field -> fields,fielding,fielded,field's
 field-test -> field-tests,field-testing,field-tested
 fielder -> fielders
 fieldmouse -> fieldmice
@@ -6102,6 +6103,7 @@ harry -> harries,harrying,harried
 harsh -> harsher,harshest
 harvest -> harvests,harvesting,harvested
 harvester -> harvesters
+has -> hasn't,hasn`t
 has-been -> has-beens
 hasp -> hasps
 hassle -> hassles,hassling,hassled
@@ -6522,7 +6524,7 @@ hypodermic -> hypodermics
 hypotenuse -> hypotenuses
 hypothesis -> hypotheses
 hysterectomy -> hysterectomies
-I -> I'm
+I -> I'm,I'd,I'll,I`m
 ice -> ices,icing,iced
 ice-box -> ice-boxes
 ice-bucket -> ice-buckets
@@ -6556,6 +6558,7 @@ ignite -> ignites,igniting,ignited
 ignition -> ignitions
 ignoramus -> ignoramuses
 ignore -> ignores,ignoring,ignored
+I -> I'll,I've,I'd
 ill -> ills
 ill-treat -> ill-treats,ill-treating,ill-treated
 illiterate -> illiterates
@@ -13270,7 +13273,7 @@ texture -> textures
 Thai -> Thais
 thank -> thanks,thanking,thanked
 thankyou -> thankyous
-that -> those
+that -> those,that's
 thatch -> thatches,thatching,thatched
 thatcher -> thatchers
 thaw -> thaws,thawing,thawed
@@ -13289,6 +13292,7 @@ theorist -> theorists
 theorize -> theorizes,theorizing,theorized
 theory -> theories
 therapist -> therapists
+there -> there's,there'll
 therm -> therms
 thermal -> thermals
 thermometer -> thermometers
@@ -13298,6 +13302,7 @@ thermostat -> thermostats
 thesaurus -> thesauruses
 thesis -> theses
 thespian -> thespians
+they -> they'll,they're
 thick -> thicker,thickest
 thicken -> thickens,thickening,thickened
 thickener -> thickeners
@@ -14334,6 +14339,7 @@ warship -> warships
 wart -> warts
 warthog -> warthogs
 wary -> warier,wariest
+was -> wasn't
 wash -> washes,washing,washed
 washbasin -> washbasins
 washbowl -> washbowls
@@ -14531,7 +14537,7 @@ wigwam -> wigwams
 wild -> wilder,wildest,wilds
 wildcat -> wildcats
 wilderness -> wildernesses
-will -> 'll,ll
+will -> 'll,ll,I'll,won't
 will-o-the-wisp -> will-o-the-wisps
 willie -> willies
 willow -> willows
@@ -14660,6 +14666,7 @@ worship -> worships,worshipping,worshipped
 worshipper -> worshippers
 worst -> worsts,worsting,worsted
 worthy -> worthier,worthiest,worthies
+would -> wouldn't
 wound -> wounds,wounding,wounded
 WPC -> WPCs
 wraith -> wraiths
@@ -14738,6 +14745,7 @@ yogi -> yogis
 yoke -> yokes,yoking,yoked
 yokel -> yokels
 yolk -> yolks
+you -> you're,you'll,you'd
 young -> younger,youngest
 youngster -> youngsters
 yourself -> yourselves
