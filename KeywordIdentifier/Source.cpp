@@ -26,8 +26,8 @@ using namespace std;
 
 struct Word {
 	string word;
-	int frequency;
-	int globalFreq;
+	long long frequency;
+	long long globalFreq;
 };
 
 struct lessFreq {
@@ -42,12 +42,22 @@ struct greaterFreq {
 	}
 };
 
-map<string, int> globalDictionary; 
+double docWordsCount = 0;
+
+struct orderForSummary {
+	inline bool operator() (const Word& word1, const Word& word2) {
+		double first = ((double)word1.frequency / (double)docWordsCount) / (double)log((double)word1.globalFreq + 2);
+		double second = ((double)word2.frequency / (double)docWordsCount) / (double)log((double)word2.globalFreq + 2);
+		return (first > second);
+	}
+};
+
+map<string, long long> globalDictionary;
 map<string, Word> documentDictionary;
 map<string, vector<string>> lemmaDictionary; // base word, vector<alternate words>
 vector<Word> words;
 
-string globalFile = "wordFrequency.txt"; // global word frequencies
+string globalFile = "wordFreq.txt"; // global word frequencies
 string localFile = "";
 string lemmaFile = "e_lemma.txt";
 
@@ -66,7 +76,7 @@ int main(int argc, char** argv) {
 	//istringstream(argv[1]) >> localFile;
 	//localFile = argv[1];
 
-	vector<string> texts = { "alice29.txt", "aiWiki.txt", "goldenretrieverWiki.txt" };
+	vector<string> texts = { "alice29.txt", "aiWiki.txt", "goldenretrieverWiki.txt", "cogPsych.txt" };
 	//localFile = "alice29.txt";
 	//localFile = "testing.txt";
 	//localFile = "aiWiki.txt";
@@ -124,6 +134,8 @@ void summarizeText() {
 	// sort by greater frequency in document
 	sort(words.begin(), words.end(), greaterFreq());
 
+	sort(words.begin(), words.end(), orderForSummary());
+
 	// only keep words for summary
 	vector<Word> summary;
 	if (words.size() < summarySize) {
@@ -156,52 +168,64 @@ void populateGlobalWords(string file) {
 				break;
 			}
 
+			transform(line.begin(), line.end(), line.begin(), ::tolower);
+
 			// deliminate by space to separate words ////////////////////////////
 			stringstream ss(line);
-			string item;
 
-			int count = 1;
+			string word;
+			string frequency;
+			
+			ss >> word;
+			ss >> frequency;
+			
+			long long f = stoll(frequency);
+			globalDictionary[word] = f;
 
-			string word = "";
-			int frequency = 0;
+			//string item;
 
-			while (ss >> item) {
+			//int count = 1;
 
-				// if word != "" --> 
-				if (item.compare("") != 0) {
-					// If item is first, it is the word
-					if (count == 1) {
-						transform(item.begin(), item.end(), item.begin(), ::tolower);
-						int countChar = 0;
-						for (char c : item) {
-							if (c != ' ' && c != -96) {
-								if ((c >= 'a' && c <= 'z') || c == '\'') {
-									if (countChar == 0 || countChar == item.size()) {
-										if (c != '\'') {
-											word += c;
-										}
-									}
-									else {
-										word += c;
-									}
-								}
-							}
-							countChar++;
-						}
-						count++;
-					}
-					// If item is second, it is the frequency
-					else if (count == 2) {
-						frequency = stoi(item);
-						count == 1;
+			//string word = "";
+			//int frequency = 0;
 
-						// add word to globalWords vector
-						globalDictionary[word] = frequency;
+			//while (ss >> item) {
 
-						word = "";
-					}
-				}
-			}
+			//	// if word != "" --> 
+			//	if (item.compare("") != 0) {
+			//		// If item is first, it is the word
+			//		if (count == 1) {
+			//			transform(item.begin(), item.end(), item.begin(), ::tolower);
+			//			int countChar = 0;
+			//			for (char c : item) {
+			//				if (c != ' ' && c != -96) {
+			//					if ((c >= 'a' && c <= 'z') || c == '\'') {
+			//						if (countChar == 0 || countChar == item.size()) {
+			//							if (c != '\'') {
+			//								word += c;
+			//							}
+			//						}
+			//						else {
+			//							word += c;
+			//						}
+			//					}
+			//				}
+			//				countChar++;
+			//			}
+			//			count++;
+			//		}
+			//		// If item is second, it is the frequency
+			//		else if (count == 2) {
+			//			frequency = stoi(item);
+			//			count == 1;
+
+			//			// add word to globalWords vector
+			//			globalDictionary[word] = frequency;
+
+			//			word = "";
+			//		}
+			//	}
+			//}
 		}
 	}
 	else {
@@ -294,11 +318,21 @@ void populateLemmaMap(string file) {
 
 	// if lemma is found in global dictionary, add alternate words to global dictionary with corresponding frequencies
 	for (auto& item : lemmaDictionary) {
+		if (item.first == "do" || item.first == "don't") {
+			int x = 0;
+		}
 		// if lemma found in global dictionary
 		if (globalDictionary.find(item.first) != globalDictionary.end()) {
 			// for each alternate word, add alt words to global
 			for (string word : item.second) {
-				globalDictionary[word] = globalDictionary[item.first];
+
+				if (globalDictionary.find(word) != globalDictionary.end()) {
+					//globalDictionary.emplace(make_pair(word, globalDictionary[item.first]));
+					string testWord = word;
+					long long testFreq = globalDictionary.find(word)->second; //globalDictionary.at(item.first);
+					globalDictionary.emplace(make_pair(testWord, (long long)5));
+					//globalDictionary[word] = globalDictionary[updateItem];
+				}
 			}
 		}
 	}
@@ -359,6 +393,8 @@ void populateDocumentWords(string file) {
 
 	// close file
 	infile.close();
+
+	docWordsCount = documentDictionary.size();
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
