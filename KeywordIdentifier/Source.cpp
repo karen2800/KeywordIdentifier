@@ -24,10 +24,12 @@
 
 using namespace std;
 
+double docWordsCount = 0.0;
+
 struct Word {
 	string word;
-	int frequency;
-	int globalFreq;
+	double frequency;
+	double globalFreq;
 };
 
 struct lessFreq {
@@ -38,30 +40,28 @@ struct lessFreq {
 
 struct greaterFreq {
 	inline bool operator() (const Word& word1, const Word& word2) {
-		return (word1.frequency > word2.frequency);
+		return ((word1.frequency * 100.0 / docWordsCount)/(word1.globalFreq + 2.0) > (word2.frequency * 100.0 / docWordsCount)/(word2.globalFreq + 2.0));
 	}
 };
 
-double docWordsCount = 0;
-
 struct orderForSummary {
 	inline bool operator() (const Word& word1, const Word& word2) {
-		double first = ((double)word1.frequency / (double)docWordsCount) / (double)log((double)word1.globalFreq + 2);
-		double second = ((double)word2.frequency / (double)docWordsCount) / (double)log((double)word2.globalFreq + 2);
+		double first = ((double)word1.frequency * 10.0 / (double)log(docWordsCount) + 2) / (double)log((double)word1.globalFreq + 2);
+		double second = ((double)word2.frequency * 10.0 / (double)log(docWordsCount) + 2) / (double)log((double)word2.globalFreq + 2);
 		return (first > second);
 	}
 };
 
-map<string, int> globalDictionary; 
+map<string, double> globalDictionary;
 map<string, Word> documentDictionary;
 map<string, vector<string>> lemmaDictionary; // base word, vector<alternate words>
 vector<Word> words;
 
-string globalFile = "wordFrequency.txt"; // global word frequencies
+string globalFile = "wordFreq.txt"; // global word frequencies
 string localFile = "";
 string lemmaFile = "e_lemma.txt";
 
-const int freqBound = 124000;
+const double freqBound = 18.0;
 int summarySize = 30;
 
 void populateGlobalOverall();
@@ -111,6 +111,7 @@ void summarizeText() {
 	// assign global frequencies to document word
 	for (auto& word : documentDictionary) {
 		word.second.globalFreq = globalDictionary[word.first];
+		int x = 0;
 	}
 
 	// sort document words by 
@@ -120,7 +121,7 @@ void summarizeText() {
 	// remove words with high global frequencies
 	for (auto& word : documentDictionary) {
 		Word w;
-		if (word.second.globalFreq < freqBound && word.first.size() != 0) {
+		if (word.second.globalFreq < freqBound && word.first.size() != 0 && word.second.globalFreq != 0) {
 			w.word = word.first;
 			w.globalFreq = word.second.globalFreq;
 			w.frequency = word.second.frequency;
@@ -134,7 +135,9 @@ void summarizeText() {
 	// sort by greater frequency in document
 	sort(words.begin(), words.end(), greaterFreq());
 
-	sort(words.begin(), words.end(), orderForSummary());
+
+	//sort(words.begin(), words.end(), orderForSummary());
+
 
 	// only keep words for summary
 	vector<Word> summary;
@@ -146,13 +149,13 @@ void summarizeText() {
 	}
 
 	// sort by lower frequency globally
-	sort(summary.begin(), summary.end(), lessFreq());
+	//sort(summary.begin(), summary.end(), lessFreq());
 
-	cout << "Word" << " [document frequency, global frequency]" << endl;
+	cout << "Word" << " [docFreq * 100/docCount, first/log(glob), docWordFreq, global frequency]" << endl;
 	cout << "------------------------------------" << endl << endl;
 
 	for (int i = 0; i < summarySize; i++) {
-		cout << summary[i].word << " [" << summary[i].frequency << ", " << summary[i].globalFreq << "]" << endl;
+		cout << summary[i].word << " [" << summary[i].frequency * 100.0 /docWordsCount << ", " << (summary[i].frequency * 100.0 / docWordsCount)/(summary[i].globalFreq) << ", " << summary[i].frequency << ", " << summary[i].globalFreq << "]" << endl;
 	}
 	cout << endl;
 }
@@ -175,7 +178,7 @@ void populateGlobalWords(string file) {
 			int count = 1;
 
 			string word = "";
-			int frequency = 0;
+			long long frequency = (long long)0;
 
 			while (ss >> item) {
 
@@ -204,11 +207,12 @@ void populateGlobalWords(string file) {
 					}
 					// If item is second, it is the frequency
 					else if (count == 2) {
-						frequency = stoi(item);
+						frequency = stoll(item);
+						double freq = (double)log(frequency);
 						count == 1;
 
 						// add word to globalWords vector
-						globalDictionary[word] = frequency;
+						globalDictionary[word] = freq;
 
 						word = "";
 					}
@@ -310,7 +314,9 @@ void populateLemmaMap(string file) {
 		if (globalDictionary.find(item.first) != globalDictionary.end()) {
 			// for each alternate word, add alt words to global
 			for (string word : item.second) {
-				globalDictionary[word] = globalDictionary[item.first];
+				double freq = globalDictionary.at(item.first);
+				globalDictionary.insert(std::make_pair(word, freq)).second;
+				//globalDictionary[word] = freq;
 			}
 		}
 	}
@@ -355,7 +361,7 @@ void populateDocumentWords(string file) {
 					}
 					if (documentDictionary.find(word) == documentDictionary.end()) {
 						//not found
-						documentDictionary[word].frequency = 1;
+						documentDictionary[word].frequency = 1.0;
 					}
 					else {
 						//found

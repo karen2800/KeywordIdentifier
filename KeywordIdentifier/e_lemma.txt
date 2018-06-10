@@ -295,6 +295,7 @@ Algerian -> Algerians
 algorithm -> algorithms
 alias -> aliases
 alibi -> alibis
+alice -> alice's
 alien -> aliens
 alienate -> alienates,alienating,alienated
 alight -> alights,alighting,alighted,alit
@@ -1130,7 +1131,7 @@ bigwig -> bigwigs
 bike -> bikes
 bikini -> bikinis
 bilberry -> bilberries
-bill -> bills,billing,billed
+bill -> bills,billing,billed,bill's
 bill-hook -> bill-hooks
 billboard -> billboards
 billet -> billets,billeting,billeted
@@ -1936,7 +1937,7 @@ castor -> castors
 castrate -> castrates,castrating,castrated
 casual -> casuals
 casualty -> casualties
-cat -> cats
+cat -> cats,cat's
 cat's-eye -> cat's-eyes
 cataclysm -> cataclysms
 catacomb -> catacombs
@@ -2950,6 +2951,7 @@ couch -> couches,couching,couched
 couchette -> couchettes
 cougar -> cougars
 cough -> coughs,coughing,coughed
+could -> couldn't
 council -> councils
 councillor -> councillors
 counsel -> counsels,counselling,counselled
@@ -4127,7 +4129,7 @@ dry -> drier,dryer,driest,dries,drying
 dry-clean -> dry-cleans,dry-cleaning,dry-cleaned
 dryer -> dryers
 dub -> dubs,dubbing,dubbed
-duchess -> duchesses
+duchess -> duchesses,duchess's
 duchy -> duchies
 duck -> ducks,ducking,ducked
 ducking -> duckings
@@ -6103,7 +6105,7 @@ harry -> harries,harrying,harried
 harsh -> harsher,harshest
 harvest -> harvests,harvesting,harvested
 harvester -> harvesters
-has -> hasn't,hasn`t
+has -> have,had,hadn't,hasn't
 has-been -> has-beens
 hasp -> hasps
 hassle -> hassles,hassling,hassled
@@ -6126,7 +6128,7 @@ haul -> hauls,hauling,hauled
 haulier -> hauliers
 haunch -> haunches
 haunt -> haunts,haunting,haunted
-have -> has,having,had
+have -> has,having,had,haven't
 haven -> havens
 haversack -> haversacks
 haw -> haws,hawing,hawed
@@ -6140,6 +6142,7 @@ hazard -> hazards,hazarding,hazarded
 hazel -> hazels
 hazelnut -> hazelnuts
 hazy -> hazier,haziest
+he -> he's,he'll
 he-man -> he-men
 head -> heads,heading,headed
 head-hunter -> head-hunters
@@ -6524,7 +6527,7 @@ hypodermic -> hypodermics
 hypotenuse -> hypotenuses
 hypothesis -> hypotheses
 hysterectomy -> hysterectomies
-I -> I'm,I'd,I'll,I`m
+I -> I'm,I'll,I've,I'd
 ice -> ices,icing,iced
 ice-box -> ice-boxes
 ice-bucket -> ice-buckets
@@ -6969,6 +6972,7 @@ irrigate -> irrigates,irrigating,irrigated
 irritant -> irritants
 irritate -> irritates,irritating,irritated
 irritation -> irritations
+is -> isn't
 island -> islands
 islander -> islanders
 isle -> isles
@@ -6979,7 +6983,7 @@ isotope -> isotopes
 Israeli -> Israelis
 issue -> issues,issuing,issued
 isthmus -> isthmuses
-it -> it's,its
+it -> it's,its,it'll,'tis
 Italian -> Italians
 itch -> itches,itching,itched
 item -> items
@@ -7113,7 +7117,7 @@ junkie -> junkies
 junta -> juntas
 jurist -> jurists
 juror -> jurors
-jury -> juries
+jury -> juries,jurymen
 justice -> justices
 justification -> justifications
 justify -> justifies,justifying,justified
@@ -7418,7 +7422,7 @@ lesbian -> lesbians
 lesion -> lesions
 lessen -> lessens,lessening,lessened
 lesson -> lessons
-let -> lets,letting
+let -> lets,letting,let's
 let-up -> let-ups
 letdown -> letdowns
 letter -> letters
@@ -8270,7 +8274,7 @@ mollify -> mollifies,mollifying,mollified
 mollusc -> molluscs
 mollycoddle -> mollycoddles,mollycoddling,mollycoddled
 mom -> moms
-moment -> moments
+moment -> moments,moment's
 momma -> mommas
 monarch -> monarchs
 monarchist -> monarchists
@@ -8519,7 +8523,7 @@ necklace -> necklaces
 neckline -> necklines
 necktie -> neckties
 nectarine -> nectarines
-need -> needs,needing,needed
+need -> needs,needing,needed,needn't
 needle -> needles,needling,needled
 needlewoman -> needlewomen
 needy -> needier,neediest
@@ -9529,7 +9533,7 @@ piddle -> piddles,piddling,piddled
 pidgin -> pidgins
 pie -> pies
 piece -> pieces,piecing,pieced
-pied-à-terre -> pieds-à-terre
+pied-Ã -terre -> pieds-Ã -terre
 pier -> piers
 pierce -> pierces,piercing,pierced
 pierrot -> pierrots
@@ -10356,7 +10360,7 @@ quatrain -> quatrains
 quaver -> quavers,quavering,quavered
 quay -> quays
 queasy -> queasier,queasiest
-queen -> queens
+queen -> queens,queen's
 queer -> queerer,queeres,queers
 queer -> queerer,queerest,queers
 quell -> quells,quelling,quelled
@@ -10398,7 +10402,7 @@ quotation -> quotations
 quote -> quotes,quoting,quoted
 quotient -> quotients
 rabbi -> rabbis
-rabbit -> rabbits,rabbiting,rabbited
+rabbit -> rabbits,rabbiting,rabbited,rabbit's
 rabble-rouser -> rabble-rousers
 raccoon -> raccoons
 race -> races,racing,raced
@@ -11682,6 +11686,7 @@ shake -> shakes,shaking,shook,shaken
 shake-up -> shake-ups
 shaker -> shakers
 shaky -> shakier,shakiest
+shall -> shan't
 shallot -> shallots
 shallow -> shallower,shallowest,shallows
 sham -> shams,shamming,shammed
@@ -11707,6 +11712,7 @@ shave -> shaves,shaved,shaven,shaving
 shaver -> shavers
 shaving -> shavings
 shawl -> shawls
+she -> she's,she'll,she'd
 sheaf -> sheaves
 shear -> shears,shearing,sheared,shorn
 sheath -> sheaths
@@ -11790,6 +11796,7 @@ shortie -> shorties
 shorty -> shorties
 shot -> shots
 shotgun -> shotguns
+should -> shouldn't
 shoulder -> shoulders,shouldering,shouldered
 shoulder-bag -> shoulder-bags
 shoulder-strap -> shoulder-straps
@@ -13273,7 +13280,7 @@ texture -> textures
 Thai -> Thais
 thank -> thanks,thanking,thanked
 thankyou -> thankyous
-that -> those,that's
+that -> those,that's,that'll
 thatch -> thatches,thatching,thatched
 thatcher -> thatchers
 thaw -> thaws,thawing,thawed
@@ -13302,7 +13309,7 @@ thermostat -> thermostats
 thesaurus -> thesauruses
 thesis -> theses
 thespian -> thespians
-they -> they'll,they're
+they -> they'd,they'll,they're
 thick -> thicker,thickest
 thicken -> thickens,thickening,thickened
 thickener -> thickeners
@@ -14400,6 +14407,7 @@ wayfarer -> wayfarers
 waylay -> waylays,waylaying,waylaid
 wayside -> waysides
 wc -> wc's
+we -> we're,we'll,we've
 weak -> weaker,weakest
 weaken -> weakens,weakening,weakened
 weakling -> weaklings
@@ -14464,6 +14472,7 @@ whacking -> whackings
 whale -> whales
 whaler -> whalers
 wharf -> wharves
+what -> what's,what'll
 wheat -> wheats
 wheedle -> wheedles,wheedling,wheedled
 wheel -> wheels,wheeling,wheeled
@@ -14477,6 +14486,7 @@ wheeze -> wheezes,wheezing,wheezed
 wheezy -> wheezier,wheeziest
 whelk -> whelks
 whelp -> whelps,whelping,whelped
+where -> where's,where'll
 whet -> whets,whetting,whetted
 whetstone -> whetstones
 whiff -> whiffs
@@ -14537,7 +14547,7 @@ wigwam -> wigwams
 wild -> wilder,wildest,wilds
 wildcat -> wildcats
 wilderness -> wildernesses
-will -> 'll,ll,I'll,won't
+will -> 'll,ll,won't
 will-o-the-wisp -> will-o-the-wisps
 willie -> willies
 willow -> willows
@@ -14745,7 +14755,7 @@ yogi -> yogis
 yoke -> yokes,yoking,yoked
 yokel -> yokels
 yolk -> yolks
-you -> you're,you'll,you'd
+you -> you'd,you'll,you've,you're
 young -> younger,youngest
 youngster -> youngsters
 yourself -> yourselves
