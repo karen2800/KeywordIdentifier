@@ -1789,7 +1789,7 @@ campion -> campions
 campsite -> campsites
 campus -> campuses
 camshaft -> camshafts
-can -> can't
+can -> can't,cannot
 can-can -> can-cans
 Canadian -> Canadians
 canal -> canals
@@ -4957,7 +4957,7 @@ fiddler -> fiddlers
 fiddly -> fiddlier,fiddliest
 fidget -> fidgets,fidgeting,fidgeted
 fief -> fiefs
-field -> fields,fielding,fielded
+field -> fields,fielding,fielded,field's
 field-test -> field-tests,field-testing,field-tested
 fielder -> fielders
 fieldmouse -> fieldmice
@@ -6105,7 +6105,7 @@ harry -> harries,harrying,harried
 harsh -> harsher,harshest
 harvest -> harvests,harvesting,harvested
 harvester -> harvesters
-has -> have,had,hadn't
+has -> have,had,hadn't,hasn't
 has-been -> has-beens
 hasp -> hasps
 hassle -> hassles,hassling,hassled
@@ -6561,6 +6561,7 @@ ignite -> ignites,igniting,ignited
 ignition -> ignitions
 ignoramus -> ignoramuses
 ignore -> ignores,ignoring,ignored
+I -> I'll,I've,I'd
 ill -> ills
 ill-treat -> ill-treats,ill-treating,ill-treated
 illiterate -> illiterates
@@ -9532,7 +9533,7 @@ piddle -> piddles,piddling,piddled
 pidgin -> pidgins
 pie -> pies
 piece -> pieces,piecing,pieced
-pied-à-terre -> pieds-à-terre
+pied-Ã -terre -> pieds-Ã -terre
 pier -> piers
 pierce -> pierces,piercing,pierced
 pierrot -> pierrots

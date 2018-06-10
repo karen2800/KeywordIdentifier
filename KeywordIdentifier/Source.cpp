@@ -135,7 +135,9 @@ void summarizeText() {
 	// sort by greater frequency in document
 	sort(words.begin(), words.end(), greaterFreq());
 
+
 	//sort(words.begin(), words.end(), orderForSummary());
+
 
 	// only keep words for summary
 	vector<Word> summary;
@@ -375,10 +377,6 @@ void populateDocumentWords(string file) {
 
 	// close file
 	infile.close();
-
-	//for (auto& w : documentDictionary) {
-	//	documentDictionary.at(w.first).frequency = (double)log(documentDictionary.at(w.first).frequency);
-	//}
 
 	docWordsCount = documentDictionary.size();
 }
