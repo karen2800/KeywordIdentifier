@@ -1,0 +1,139 @@
+Summarize alice29.txt
+[((Word freq in doc) * 100 / #words in doc) | log(global frequency)]    Word
+------------------------------------
+
+ [0.849 | 16.300]       alice
+ [0.182 | 16.417]       herself
+ [0.157 | 12.590]       hatter
+ [0.149 | 13.055]       gryphon
+ [0.141 | 17.293]       queen
+ [0.135 | 14.967]       mock
+ [0.130 | 15.483]       turtle
+ [0.119 | 17.460]       began
+ [0.125 | 11.221]       dormouse
+ [0.111 | 17.889]       quite
+ [0.100 | 13.717]       duchess
+ [0.096 | 16.036]       rabbit
+ [0.094 | 17.984]       voice
+ [0.094 | 17.281]       looked
+ [0.086 | 16.672]       tone
+ [0.082 | 17.940]       round
+ [0.079 | 17.332]       mouse
+ [0.077 | 14.497]       hare
+ [0.071 | 17.662]       cat
+ [0.067 | 14.482]       caterpillar
+ [0.066 | 15.834]       replied
+ [0.062 | 16.841]       dear
+ [0.061 | 17.632]       heard
+ [0.060 | 17.390]       moment
+ [0.058 | 17.852]       door
+ [0.058 | 16.835]       seemed
+ [0.055 | 17.686]       eyes
+ [0.055 | 17.688]       poor
+ [0.048 | 17.322]       felt
+ [0.047 | 15.286]       cried
+
+Summarize aiWiki.txt
+[((Word freq in doc) * 100 / #words in doc) | log(global frequency)]    Word
+------------------------------------
+
+ [0.364 | 16.321]       ai
+ [0.258 | 17.267]       intelligence
+ [0.161 | 16.177]       artificial
+ [0.092 | 12.080]       subfields
+ [0.085 | 17.420]       goals
+ [0.048 | 15.335]       philosophical
+ [0.048 | 15.482]       neural
+ [0.045 | 16.359]       humans
+ [0.045 | 16.430]       founded
+ [0.045 | 16.464]       intelligent
+ [0.045 | 16.653]       approaches
+ [0.045 | 16.707]       successfully
+ [0.044 | 17.010]       experienced
+ [0.043 | 17.181]       philosophy
+ [0.043 | 17.264]       followed
+ [0.043 | 17.447]       machines
+ [0.042 | 17.511]       techniques
+ [0.042 | 17.680]       funding
+ [0.042 | 17.684]       traditional
+ [0.042 | 17.715]       understanding
+ [0.041 | 17.928]       networks
+ [0.038 | 9.875]        humanlike
+ [0.033 | 11.190]       colloquially
+ [0.030 | 12.197]       quip
+ [0.029 | 12.745]       longterm
+ [0.029 | 12.906]       perceives
+ [0.029 | 12.946]       mimics
+ [0.028 | 13.304]       resurgence
+ [0.027 | 13.897]       antiquity
+ [0.026 | 14.028]       progresses
+
+Summarize goldenretrieverWiki.txt
+[((Word freq in doc) * 100 / #words in doc) | log(global frequency)]    Word
+------------------------------------
+
+ [0.485 | 17.354]       golden
+ [0.329 | 14.625]       retriever
+ [0.303 | 12.883]       retrievers
+ [0.145 | 15.859]       breed
+ [0.111 | 17.162]       dogs
+ [0.110 | 16.318]       coat
+ [0.064 | 17.185]       colour
+ [0.062 | 14.486]       kennel
+ [0.053 | 15.228]       coats
+ [0.048 | 16.803]       hunting
+ [0.044 | 13.791]       temperament
+ [0.041 | 17.267]       scotland
+ [0.035 | 17.351]       cm
+ [0.035 | 14.504]       bred
+ [0.036 | 11.204]       goldens
+ [0.034 | 14.543]       darker
+ [0.033 | 15.078]       retrieving
+ [0.033 | 15.129]       grooming
+ [0.032 | 15.654]       lighter
+ [0.032 | 15.712]       puppy
+ [0.032 | 15.771]       breeds
+ [0.029 | 17.070]       cream
+ [0.029 | 13.836]       shedding
+ [0.027 | 14.684]       obedience
+ [0.027 | 14.901]       muscular
+ [0.027 | 14.944]       unacceptable
+ [0.026 | 15.370]       puppies
+ [0.027 | 11.172]       trainable
+ [0.026 | 15.691]       origins
+ [0.025 | 15.721]       shed
+
+Summarize cogPsych.txt
+[((Word freq in doc) * 100 / #words in doc) | log(global frequency)]    Word
+------------------------------------
+
+ [0.301 | 17.330]       brain
+ [0.199 | 15.921]       cognitive
+ [0.141 | 14.742]       hemisphere
+ [0.126 | 16.480]       sentence
+ [0.102 | 17.832]       processing
+ [0.099 | 17.574]       situation
+ [0.098 | 16.432]       experiments
+ [0.095 | 17.733]       theory
+ [0.095 | 17.887]       patients
+ [0.090 | 17.390]       mental
+ [0.088 | 17.977]       approach
+ [0.088 | 15.560]       sentences
+ [0.086 | 16.991]       psychology
+ [0.085 | 16.741]       representation
+ [0.084 | 17.500]       task
+ [0.076 | 17.337]       objects
+ [0.072 | 16.509]       experiment
+ [0.073 | 14.870]       comprehension
+ [0.071 | 16.467]       behaviour
+ [0.067 | 17.727]       visual
+ [0.067 | 12.732]       knut
+ [0.062 | 17.235]       participants
+ [0.059 | 17.943]       evidence
+ [0.059 | 17.944]       therefore
+ [0.060 | 15.607]       reasoning
+ [0.058 | 17.177]       meaning
+ [0.058 | 16.001]       theories
+ [0.057 | 17.980]       communication
+ [0.057 | 14.518]       cognition
+ [0.056 | 15.404]       imagery

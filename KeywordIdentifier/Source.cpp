@@ -21,6 +21,7 @@
 #include <stdlib.h>
 #include <locale>
 #include <cstdlib>
+#include <iomanip>
 
 using namespace std;
 
@@ -151,11 +152,12 @@ void summarizeText() {
 	// sort by lower frequency globally
 	//sort(summary.begin(), summary.end(), lessFreq());
 
-	cout << "Word" << " [docFreq * 100/docCount, first/log(glob), docWordFreq, global frequency]" << endl;
+	cout << "[((Word freq in doc) * 100 / #words in doc) | log(global frequency)]\tWord" << endl;
 	cout << "------------------------------------" << endl << endl;
 
+	std::cout << std::setprecision(3) << std::fixed;
 	for (int i = 0; i < summarySize; i++) {
-		cout << summary[i].word << " [" << summary[i].frequency * 100.0 /docWordsCount << ", " << (summary[i].frequency * 100.0 / docWordsCount)/(summary[i].globalFreq) << ", " << summary[i].frequency << ", " << summary[i].globalFreq << "]" << endl;
+		cout << " [" << (summary[i].frequency * 100.0 / docWordsCount)/(summary[i].globalFreq) << " | " << summary[i].globalFreq << "]\t" << summary[i].word << endl;
 	}
 	cout << endl;
 }
